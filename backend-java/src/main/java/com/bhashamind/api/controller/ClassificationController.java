@@ -1,18 +1,28 @@
-package com.bhashamind.api.controller;
+package com.bhashamind.api.service;
 
-import com.bhashamind.api.service.ClassificationService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.http.*;
 
-@RestController
-@RequestMapping("/api")
-public class ClassificationController {
+import java.util.HashMap;
+import java.util.Map;
 
-    @Autowired
-    private ClassificationService classificationService;
+@Service
+public class ClassificationService {
 
-    @PostMapping("/classify")
-    public String classify(@RequestBody String text) {
-        return classificationService.classify(text);
+    private final String FASTAPI_URL = "http://localhost:8000/classify";
+    private final RestTemplate restTemplate = new RestTemplate();
+
+    public String classify(String text) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        Map<String, String> payload = new HashMap<>();
+        payload.put("text", text);
+
+        HttpEntity<Map<String, String>> request = new HttpEntity<>(payload, headers);
+
+        ResponseEntity<Map> response = restTemplate.postForEntity(FASTAPI_URL, request, Map.class);
+        return response.getBody().get("label").toString();
     }
 }
