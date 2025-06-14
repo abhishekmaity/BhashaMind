@@ -17,7 +17,7 @@ BhashaMind (ভাষাMind) is an open-source Bengali language processing prot
 
 ## 🏗️ System Architecture
 
-![Architecture](docs/system-architecture.png)
+![Architecture](docs/sys-architecture.png)
 
 ```plaintext
 [React Frontend] <---> [Spring Boot API Gateway] <---> [FastAPI NLP Backend] <---> [Transformer Models]
