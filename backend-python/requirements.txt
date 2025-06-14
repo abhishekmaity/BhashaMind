@@ -4,3 +4,6 @@ transformers
 fastapi
 uvicorn
 redis
+flake8
+pylint
+mypy
