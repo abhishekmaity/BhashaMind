@@ -1,6 +1,7 @@
-from transformers import AutoTokenizer, AutoModelForSequenceClassification
-import torch
+"""Module defining the classifier model and tokenizer."""
 
-model_name = "ai4bharat/indic-bert"  # Or your fine-tuned checkpoint path
-tokenizer = AutoTokenizer.from_pretrained(model_name)
-model = AutoModelForSequenceClassification.from_pretrained(model_name)
+from transformers import AutoTokenizer, AutoModelForSequenceClassification
+
+MODEL_NAME = "ai4bharat/indic-bert"  # Or your fine-tuned checkpoint path
+tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
+model = AutoModelForSequenceClassification.from_pretrained(MODEL_NAME)
