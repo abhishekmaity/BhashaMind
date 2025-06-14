@@ -87,3 +87,9 @@ services:
     environment:
       RABBITMQ_DEFAULT_USER: guest
       RABBITMQ_DEFAULT_PASS: guest
+
+services:
+  backend-python:
+    env_file:
+      - ./backend-python/.env
+
