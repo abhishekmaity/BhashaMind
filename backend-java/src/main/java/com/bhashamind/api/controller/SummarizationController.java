@@ -1,18 +1,28 @@
-package com.bhashamind.api.controller;
+package com.bhashamind.api.service;
 
-import com.bhashamind.api.service.SummarizationService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.http.*;
 
-@RestController
-@RequestMapping("/api")
-public class SummarizationController {
+import java.util.HashMap;
+import java.util.Map;
 
-    @Autowired
-    private SummarizationService summarizationService;
+@Service
+public class SummarizationService {
 
-    @PostMapping("/summarize")
-    public String summarize(@RequestBody String text) {
-        return summarizationService.summarize(text);
+    private final String FASTAPI_URL = "http://localhost:8000/summarize";
+    private final RestTemplate restTemplate = new RestTemplate();
+
+    public String getSummary(String text) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        Map<String, String> payload = new HashMap<>();
+        payload.put("text", text);
+
+        HttpEntity<Map<String, String>> request = new HttpEntity<>(payload, headers);
+
+        ResponseEntity<Map> response = restTemplate.postForEntity(FASTAPI_URL, request, Map.class);
+        return response.getBody().get("summary").toString();
     }
 }
