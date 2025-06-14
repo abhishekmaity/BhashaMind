@@ -2,6 +2,7 @@ from fastapi import FastAPI, HTTPException, Request
 from pydantic import BaseModel
 from transformers import pipeline
 import logging
+import os
 
 app = FastAPI()
 
@@ -46,4 +47,8 @@ async def classify(req: TextRequest):
 @app.get("/health")
 async def health_check():
     return {"status": "ok"}
+
+output_dir = os.getenv("OUTPUT_DIR", "outputs")
+os.makedirs(output_dir, exist_ok=True)
+# Save model output to that dir
 
