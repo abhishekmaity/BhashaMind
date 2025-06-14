@@ -64,3 +64,17 @@ services:
       interval: 30s
       timeout: 10s
       retries: 3
+
+services:
+  backend-python:
+    build:
+      context: ./backend-python
+    volumes:
+      - model_output:/app/outputs
+    environment:
+      - OUTPUT_DIR=/app/outputs
+    ...
+
+volumes:
+  model_output:  # <-- This is the named volume
+
