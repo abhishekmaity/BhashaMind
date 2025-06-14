@@ -4,6 +4,11 @@ from transformers import pipeline
 import logging
 import os
 
+from dotenv import load_dotenv
+load_dotenv()
+
+model_name = os.getenv("MODEL_NAME")
+
 app = FastAPI()
 
 # Logging setup
