@@ -1,8 +1,9 @@
+from .models import summarizer_model
 from transformers import pipeline
 
-# Load summarization pipeline
-summarizer = pipeline("summarization", model="csebuetnlp/mT5_multilingual_XLSum")
+summarizer = pipeline("summarization", model=summarizer_model.model, tokenizer=summarizer_model.tokenizer)
 
 def summarize_text(text: str) -> str:
-    result = summarizer(text, max_length=100, min_length=30, do_sample=False)
-    return result[0]['summary_text']
+    summary = summarizer(text, max_length=128, min_length=30, do_sample=False)
+    return summary[0]["summary_text"]
+
