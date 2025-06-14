@@ -42,3 +42,8 @@ async def classify(req: TextRequest):
     except Exception as e:
         logging.error(f"Classification failed: {e}")
         raise HTTPException(status_code=500, detail="Classification model error.")
+
+@app.get("/health")
+async def health_check():
+    return {"status": "ok"}
+
