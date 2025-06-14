@@ -1,6 +1,6 @@
-# BhashaMind: A Bengali Language Intelligence Platform
+# *Bhasha*Mind: A Bengali Language Intelligence Platform
 
-![BhashaMind Banner](docs/paper/system-architecture.png)
+![BhashaMind Banner](docs/banner)
 
 BhashaMind (ভাষাMind) is an open-source Bengali language processing prototype focused on **text summarization** and **zero-shot classification** using state-of-the-art deep learning and LLM technologies. It integrates a full-stack application built with **FastAPI**, **Spring Boot**, and **React**, designed for real-world applications.
 
