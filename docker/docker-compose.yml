@@ -78,3 +78,12 @@ services:
 volumes:
   model_output:  # <-- This is the named volume
 
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"     # RabbitMQ
+      - "15672:15672"   # Web UI
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
