@@ -1,4 +1,6 @@
+torch==2.1.2+cu121     # Match CUDA version
+--extra-index-url https://download.pytorch.org/whl/cu121
+transformers
 fastapi
 uvicorn
-transformers
-torch
+redis
