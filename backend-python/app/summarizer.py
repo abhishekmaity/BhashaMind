@@ -1,10 +1,8 @@
-# backend-python/app/summarizer.py
-
 from transformers import pipeline
 
-# Bengali-compatible summarization pipeline
+# Load summarization pipeline
 summarizer = pipeline("summarization", model="csebuetnlp/mT5_multilingual_XLSum")
 
-def generate_summary(text: str) -> str:
-    summary = summarizer(text, max_length=100, min_length=25, do_sample=False)
-    return summary[0]['summary_text']
+def summarize_text(text: str) -> str:
+    result = summarizer(text, max_length=100, min_length=30, do_sample=False)
+    return result[0]['summary_text']
