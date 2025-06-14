@@ -61,24 +61,18 @@ BhashaMind (ভাষাMind) is an open-source Bengali language processing prot
 
 > **Note:** Bengali is supported by XLM-R via multilingual training and subword tokenization.
 
----
-
 ## 📚 References & Resources
 - [FastAPI](https://fastapi.tiangolo.com)
 - [Transformers by HuggingFace](https://huggingface.co/transformers)
 - [XLM-RoBERTa Paper](https://arxiv.org/abs/1911.02116)
 - [BanglaT5: Bangla Text-to-Text Transfer Transformer](https://aclanthology.org/2023.findings-eacl.54.pdf)
 
----
-
 ## 🙏 Acknowledgements
-We express gratitude to:
+
 - **HuggingFace** for democratizing NLP through open models and tools.
 - **Open Source Contributors** from the FastAPI, Spring Boot, and React communities.
 - **Bangla Wikipedia** and **AI4Bharat** for dataset inspiration and multilingual benchmarks.
 - **Researchers and authors** of foundational LLMs that enable zero-shot learning in low-resource settings.
-
----
 
 ## 📄 License
 This project is licensed under the **MIT License**.
