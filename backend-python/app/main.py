@@ -1,15 +1,15 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from summarizer import summarize_text
-from classifier import classify_text
+from .summarizer import summarize_text
+from .classifier import classify_text
 
 app = FastAPI()
 
-class TextInput(BaseModel):
+class InputText(BaseModel):
     text: str
 
 @app.post("/summarize")
-def summarize(input_data: TextInput):
+async def summarize_endpoint(input_data: InputText):
     try:
         summary = summarize_text(input_data.text)
         return {"summary": summary}
@@ -17,7 +17,7 @@ def summarize(input_data: TextInput):
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.post("/classify")
-def classify(input_data: TextInput):
+async def classify_endpoint(input_data: InputText):
     try:
         label = classify_text(input_data.text)
         return {"label": label}
