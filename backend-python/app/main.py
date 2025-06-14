@@ -1,23 +1,25 @@
-# backend-python/app/main.py
-
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from summarizer import generate_summary
+from summarizer import summarize_text
 from classifier import classify_text
 
-app = FastAPI(title="BhashaMind NLP API", version="0.1")
+app = FastAPI()
 
-class TextRequest(BaseModel):
+class TextInput(BaseModel):
     text: str
 
 @app.post("/summarize")
-def summarize(req: TextRequest):
-    if not req.text.strip():
-        raise HTTPException(status_code=400, detail="Text input is empty")
-    return {"summary": generate_summary(req.text)}
+def summarize(input_data: TextInput):
+    try:
+        summary = summarize_text(input_data.text)
+        return {"summary": summary}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 @app.post("/classify")
-def classify(req: TextRequest):
-    if not req.text.strip():
-        raise HTTPException(status_code=400, detail="Text input is empty")
-    return {"category": classify_text(req.text)}
+def classify(input_data: TextInput):
+    try:
+        label = classify_text(input_data.text)
+        return {"label": label}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
