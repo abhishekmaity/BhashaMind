@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+  backend-python:
+    build:
+      context: ../backend-python
+      dockerfile: ../docker/backend-python.Dockerfile
+    ports:
+      - "8000:8000"
+    networks:
+      - bhashanet
+
+  backend-java:
+    build:
+      context: ../backend-java
+      dockerfile: ../docker/backend-java.Dockerfile
+    ports:
+      - "8080:8080"
+    networks:
+      - bhashanet
+
+  frontend:
+    build:
+      context: ../frontend
+    ports:
+      - "3000:3000"
+    networks:
+      - bhashanet
+
+networks:
+  bhashanet:
