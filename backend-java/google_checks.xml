@@ -1,0 +1,12 @@
+<!DOCTYPE module PUBLIC
+    "-//Puppy Crawl//DTD Check Configuration 1.3//EN"
+    "http://www.puppycrawl.com/dtds/configuration_1_3.dtd">
+<module name="com.puppycrawl.tools.checkstyle.Checker">
+    <property name="charset" value="UTF-8"/>
+    <!-- SuppressionsFilter is now configured via pom.xml's suppressionsLocation property -->
+    <module name="com.puppycrawl.tools.checkstyle.TreeWalker">
+        <!-- Add some basic checks -->
+        <module name="com.puppycrawl.tools.checkstyle.checks.coding.EmptyStatementCheck"/>
+        <module name="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+    </module>
+</module>

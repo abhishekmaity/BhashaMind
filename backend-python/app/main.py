@@ -1,4 +1,4 @@
-# backend-python/app/main.py
+"""Main FastAPI application for BhashaMind NLP services."""
 
 from fastapi import FastAPI
 from app.routers import summarize
