@@ -7,3 +7,5 @@ redis
 flake8
 pylint
 mypy
+pytest
+

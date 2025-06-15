@@ -32,7 +32,7 @@ jobs:
         run: |
           cd backend-python
           # Ensure PYTHONPATH is set for pytest if it also needs to find local modules
-          PYTHONPATH=. pytest
+          PYTHONPATH=. python -m pytest
 
   test-react-frontend: # Renamed from test-frontend
     runs-on: ubuntu-latest
