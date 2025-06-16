@@ -1,7 +1,7 @@
 """Main FastAPI application for BhashaMind NLP services."""
 
 from fastapi import FastAPI
-from app.routers import summarize
+from app.routers import summarize, classify
 
 app = FastAPI(
     title="BhashaMind NLP API",
@@ -10,3 +10,4 @@ app = FastAPI(
 )
 
 app.include_router(summarize.router, prefix="/api")
+app.include_router(classify.router, prefix="/api")
