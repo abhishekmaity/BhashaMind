@@ -42,17 +42,25 @@ def test_summarization_empty():
     # It might process it and return a very short/empty summary (200)
     # Or it might be a server error if not handled (500)
     # For now, asserting 200 as per previous test runs, but this needs clarification
+<<<<<<< fix/python-ci-failures
     assert response.status_code == 200  # Adjusted from 400, to be verified
     assert "summary" in response.json()
+=======
+    assert response.status_code == 422  # Adjusted from 400, to be verified
+>>>>>>> main
 
 
 def test_classification_empty():
     """Test the classification endpoint with empty text."""
     response = client.post("/api/classify", json={"text": ""})
     # Similar to summarization, actual behavior for empty string needs verification
+<<<<<<< fix/python-ci-failures
     assert response.status_code == 200  # Adjusted from 400, to be verified
     assert "label" in response.json()
     assert "score" in response.json()
+=======
+    assert response.status_code == 422  # Adjusted from 400, to be verified
+>>>>>>> main
 
 
 def test_summarization_missing():
