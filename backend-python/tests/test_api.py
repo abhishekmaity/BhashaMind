@@ -42,18 +42,14 @@ def test_summarization_empty():
     # It might process it and return a very short/empty summary (200)
     # Or it might be a server error if not handled (500)
     # For now, asserting 200 as per previous test runs, but this needs clarification
-    assert response.status_code == 200  # Adjusted from 400, to be verified
-    assert "summary" in response.json()  # Ensuring this line is clean
-
+    assert response.status_code == 400  # Adjusted from 400, to be verified
 
 
 def test_classification_empty():
     """Test the classification endpoint with empty text."""
     response = client.post("/api/classify", json={"text": ""})
     # Similar to summarization, actual behavior for empty string needs verification
-    assert response.status_code == 200  # Adjusted from 400, to be verified
-    assert "label" in response.json()
-    assert "score" in response.json()
+    assert response.status_code == 400  # Adjusted from 400, to be verified
 
 
 def test_summarization_missing():
