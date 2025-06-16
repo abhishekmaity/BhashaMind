@@ -5,7 +5,7 @@ services:
     build:
       context: ./frontend
     ports:
-      - "3000:3000"
+      - "3000:80" # Changed target port to 80 for Nginx
     depends_on:
       api-gateway:
         condition: service_healthy
@@ -31,7 +31,7 @@ services:
       timeout: 10s
       retries: 3
 
-  nlp-backend:
+  nlp-backend: # Merged from various 'backend-python' and 'nlp-backend' entries
     build:
       context: ./backend-python
       dockerfile: Dockerfile.gpu
@@ -40,6 +40,9 @@ services:
     environment:
       - USE_CUDA=True
       - REDIS_URL=redis://redis:6379
+      - OUTPUT_DIR=/app/outputs
+    env_file:
+      - ./backend-python/.env
     runtime: nvidia  # requires NVIDIA Container Toolkit
     deploy:
       resources:
@@ -54,6 +57,8 @@ services:
       interval: 30s
       timeout: 10s
       retries: 3
+    volumes:
+      - model_output:/app/outputs
 
   redis:
     image: redis:7-alpine
@@ -65,20 +70,6 @@ services:
       timeout: 10s
       retries: 3
 
-services:
-  backend-python:
-    build:
-      context: ./backend-python
-    volumes:
-      - model_output:/app/outputs
-    environment:
-      - OUTPUT_DIR=/app/outputs
-    ...
-
-volumes:
-  model_output:  # <-- This is the named volume
-
-services:
   rabbitmq:
     image: rabbitmq:3-management
     ports:
@@ -88,8 +79,5 @@ services:
       RABBITMQ_DEFAULT_USER: guest
       RABBITMQ_DEFAULT_PASS: guest
 
-services:
-  backend-python:
-    env_file:
-      - ./backend-python/.env
-
+volumes:
+  model_output: # This is the named volume
