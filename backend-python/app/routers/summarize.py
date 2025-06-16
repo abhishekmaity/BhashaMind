@@ -11,7 +11,7 @@ router = APIRouter()
 # These should ideally be loaded once globally, not per module import,
 # but following current structure for now.
 
-tokenizer = AutoTokenizer.from_pretrained("csebuetnlp/banglat5_small")
+tokenizer = AutoTokenizer.from_pretrained("csebuetnlp/banglat5_small", use_fast=False)
 model = AutoModelForSeq2SeqLM.from_pretrained("csebuetnlp/banglat5_small")
 
 
