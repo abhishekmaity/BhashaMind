@@ -1,3 +1,4 @@
+[![CI](https://github.com/abhishekmaity/BhashaMind/actions/workflows/test.yml/badge.svg)](https://github.com/abhishekmaity/BhashaMind/actions/workflows/test.yml)
 # *Bhasha*Mind: A Bengali Language Intelligence Platform
 
 ![BhashaMind Banner](docs/banner-short.png)
