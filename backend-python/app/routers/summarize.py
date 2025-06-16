@@ -10,8 +10,9 @@ router = APIRouter()
 # Load model and tokenizer (BanglaT5)
 # These should ideally be loaded once globally, not per module import,
 # but following current structure for now.
-tokenizer = AutoTokenizer.from_pretrained("csebuetnlp/banglat5-small")
-model = AutoModelForSeq2SeqLM.from_pretrained("csebuetnlp/banglat5-small")
+
+tokenizer = AutoTokenizer.from_pretrained("csebuetnlp/banglat5_small")
+model = AutoModelForSeq2SeqLM.from_pretrained("csebuetnlp/banglat5_small")
 
 
 class SummarizationRequest(BaseModel):

@@ -19,7 +19,7 @@ class TextRequest(BaseModel):
     text: str
 
 # Load models (use try/except in production for lazy-loading)
-summarizer = pipeline("summarization", model="csebuetnlp/banglat5-small", tokenizer="csebuetnlp/banglat5-small")
+summarizer = pipeline("summarization", model="csebuetnlp/banglat5_small", tokenizer="csebuetnlp/banglat5_small")
 classifier = pipeline("zero-shot-classification", model="joeddav/xlm-roberta-large-xnli")
 
 @app.post("/api/summarize")
