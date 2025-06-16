@@ -1,6 +1,6 @@
 """API router for text summarization."""
 
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 
@@ -30,6 +30,8 @@ async def summarize_text_endpoint(request: SummarizationRequest):
     """
     Summarizes the input text using a preloaded model.
     """
+    if not request.text or request.text.isspace():
+        raise HTTPException(status_code=400, detail="Input text cannot be empty.")
     inputs = tokenizer.encode(
         "summarize: " + request.text,
         return_tensors="pt",
