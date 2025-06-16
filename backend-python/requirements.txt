@@ -9,3 +9,6 @@ pylint
 mypy
 pytest
 httpx
+tiktoken
+protobuf
+
