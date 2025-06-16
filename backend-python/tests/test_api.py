@@ -45,7 +45,6 @@ def test_summarization_empty():
     assert response.status_code == 400  # Adjusted from 400, to be verified
 
 
-
 def test_classification_empty():
     """Test the classification endpoint with empty text."""
     response = client.post("/api/classify", json={"text": ""})
