@@ -18,6 +18,7 @@ class ClassificationResponse(BaseModel):
     score: float
 
 
+
 @router.post(
     "/classify",
     response_model=ClassificationResponse
