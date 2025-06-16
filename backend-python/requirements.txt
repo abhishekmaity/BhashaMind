@@ -1,6 +1,12 @@
+<<<<<<< fix/python-ci-failures
+torch==2.6.0     # Match CUDA version
+torchaudio==2.6.0
+torchvision==0.21.0
+=======
 torch==2.3.1     # Match CUDA version
 torchaudio==2.3.1
 torchvision==0.18.1
+>>>>>>> main
 transformers
 fastapi
 uvicorn
