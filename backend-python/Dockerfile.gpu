@@ -6,10 +6,22 @@ RUN apt-get update && apt-get install -y python3 python3-pip curl && \
 
 WORKDIR /app
 
+ARG APP_USER=appuser
+RUN groupadd --gid 1000 $APP_USER && \
+    useradd --uid 1000 --gid 1000 -m $APP_USER
+# Using specific UID/GID can be helpful for volume mounts.
+
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . .
+COPY main.py .
+COPY app ./app
+COPY utils ./utils
+# Assuming models and tests are not strictly needed for the runtime image
+# If they were, they'd be added here:
+# COPY models ./models
+# COPY tests ./tests
 
+USER $APP_USER
 EXPOSE 8000
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
