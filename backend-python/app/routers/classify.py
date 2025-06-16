@@ -18,13 +18,17 @@ class ClassificationResponse(BaseModel):
     score: float
 
 
-@router.post("/classify", response_model=ClassificationResponse)
+
+@router.post(
+    "/classify",
+    response_model=ClassificationResponse
+)
 async def classify_text_endpoint(request: ClassificationRequest):
     """
     Endpoint to classify text.
     Receives text and returns its classification label and score.
     """
-    # The classify_text function is expected to return a dict like {'label': 'LABEL_X', 'score': 0.99}
-    # based on the previous understanding that it returns result[0] from a pipeline.
+    # classify_text is expected to return a dict like {'label': 'LABEL_X', 'score': 0.99},
+    # as it's assumed to return result[0] from a Hugging Face pipeline.
     classification_result = classify_text(request.text)
     return classification_result
