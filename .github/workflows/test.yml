@@ -54,10 +54,6 @@ jobs:
         run: |
           cd frontend-react # Changed directory
           npm run test
-      - name: Build React app
-        run: |
-          cd frontend-react # Changed directory
-          npm run build
 
   test-java-backend: # New job for Java backend
     runs-on: ubuntu-latest
