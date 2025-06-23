@@ -5,8 +5,6 @@
 ![Docker Image Version](https://img.shields.io/badge/Docker%20Image-latest-blue?logo=docker)
 [![CI](https://github.com/abhishekmaity/BhashaMind/actions/workflows/test.yml/badge.svg)](https://github.com/abhishekmaity/BhashaMind/actions/workflows/test.yml)
 
-# BhashaMind
-
 # *Bhasha*Mind: A Bengali Language Intelligence Platform
 
 ![BhashaMind Banner](docs/banner-short.png)
