@@ -88,7 +88,7 @@ This project is licensed under the **MIT License**.
 
 ## Disclaimer
 
-![Info Icon](https://raw.githubusercontent.com/<your-username>/<your-repo>/main/assets/info-icon.png) Google Jules (jules.google) was used exclusively for fixing errors in the Continuous Integration (CI) workflow of this repository.
+<img src="https://avatars.githubusercontent.com/in/842251?v=4&size=30"> **Google Jules** was used exclusively for fixing errors in the Continuous Integration (CI) workflow of this repository.
 
 ---
 
