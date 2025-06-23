@@ -86,6 +86,10 @@ BhashaMind (ভাষাMind) is an open-source Bengali language processing prot
 ## 📄 License
 This project is licensed under the **MIT License**.
 
+## Disclaimer
+
+![Info Icon](https://raw.githubusercontent.com/<your-username>/<your-repo>/main/assets/info-icon.png) Google Jules (jules.google) was used exclusively for fixing errors in the Continuous Integration (CI) workflow of this repository.
+
 ---
 
 > Made with ❤️ to uplift the Bengali language in the AI era.
