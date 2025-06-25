@@ -24,7 +24,7 @@ public class SummarizationController {
      * @return The summarized text.
      */
     @Autowired
-    private PythonNLPService pythonNLPService;
+    private NLPService pythonNLPService;
 
     @PostMapping("/summarize")
     public ResponseEntity<Map<String, Object>> summarize(@RequestBody Map<String, String> request) {
