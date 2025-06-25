@@ -8,24 +8,26 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class NLPService {
 
-    @Value("${backend.python.url:http://backend-python:8000}")
-    private String pythonBaseUrl;
+    private final String pythonBaseUrl = "http://localhost:8000";
 
-    private final RestTemplate restTemplate = new RestTemplate();
+    public String getSummary(String text) throws IOException, InterruptedException {
+        HttpClient client = HttpClient.newHttpClient();
+        String bodyJson = String.format("{\"text\": \"%s\"}", text.replace("\"", "\\\""));
 
-    public SummarizationResponse summarize(SummarizationRequest request) {
-        return restTemplate.postForObject(
-            pythonBaseUrl + "/summarize",
-            request,
-            SummarizationResponse.class
-        );
-    }
+        HttpRequest request = HttpRequest.newBuilder()
+            .uri(URI.create(pythonBaseUrl + "/api/summarize"))
+            .header("Content-Type", "application/json")
+            .POST(HttpRequest.BodyPublishers.ofString(bodyJson))
+            .build();
 
-    public ClassificationResponse classify(ClassificationRequest request) {
-        return restTemplate.postForObject(
-            pythonBaseUrl + "/classify",
-            request,
-            ClassificationResponse.class
-        );
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+        if (response.statusCode() == 200) {
+            // Extract "summary" from response JSON
+            String responseBody = response.body();
+            return new JSONObject(responseBody).getString("summary");
+        } else {
+            throw new RuntimeException("Python backend error: " + response.body());
+        }
     }
 }
