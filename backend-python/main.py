@@ -57,3 +57,11 @@ output_dir = os.getenv("OUTPUT_DIR", "outputs")
 os.makedirs(output_dir, exist_ok=True)
 # Save model output to that dir
 
+@app.post("/api/queue/classify")
+async def queue_classify(data: dict):
+    await send_task_to_queue("classification", {
+        "task": "classify",
+        "text": data["text"]
+    })
+    return {"status": "queued"}
+
