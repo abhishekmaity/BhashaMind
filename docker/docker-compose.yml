@@ -31,6 +31,30 @@ services:
       timeout: 10s
       retries: 3
 
+      version: "3.9"
+services:
+  backend-python:
+    build: ./backend-python
+    ports:
+      - "8000:8000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 20s
+      retries: 3
+    env_file:
+      - .env
+
+  backend-java:
+    build: ./backend-java
+    ports:
+      - "8080:8080"
+    depends_on:
+      backend-python:
+        condition: service_healthy
+    env_file:
+      - .env
+
+
   nlp-backend: # Merged from various 'backend-python' and 'nlp-backend' entries
     build:
       context: ./backend-python
