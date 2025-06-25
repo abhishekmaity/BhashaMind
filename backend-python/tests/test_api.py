@@ -68,3 +68,27 @@ def test_summarize_non_string_input():
     """Test summarization with non-string input."""
     response = client.post("/api/summarize", json={"text": 12345})
     assert response.status_code == 422  # Unprocessable Entity
+
+def test_summarization_success():
+    response = client.post("/api/summarize", json={"text": "আন্তর্জাতিক বাজারে তেলের দাম হঠাৎ কমে গেছে।"})
+    assert response.status_code == 200
+    assert "summary" in response.json()
+
+def test_classification_success():
+    response = client.post("/api/classify", json={"text": "বাংলাদেশের অর্থনীতি কৃষিনির্ভর।"})
+    assert response.status_code == 200
+    assert "label" in response.json()
+
+def test_summarization_error_short_text():
+    response = client.post("/api/summarize", json={"text": "হেলো"})
+    assert response.status_code == 400
+
+def test_classification_error_missing_text():
+    response = client.post("/api/classify", json={})
+    assert response.status_code == 422  # Unprocessable Entity due to missing field
+
+def test_health_check():
+    response = client.get("/health")
+    assert response.status_code == 200
+    assert response.json()["status"] == "ok"
+
