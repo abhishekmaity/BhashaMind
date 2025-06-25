@@ -3,7 +3,7 @@
 ![Java](https://img.shields.io/badge/Java-17-red?logo=java)
 ![React](https://img.shields.io/badge/React-Frontend-blue?logo=react)
 ![Docker Image Version](https://img.shields.io/badge/Docker%20Image-latest-blue?logo=docker)
-[![CI](https://github.com/abhishekmaity/BhashaMind/actions/workflows/test.yml/badge.svg)](https://github.com/abhishekmaity/BhashaMind/actions/workflows/test.yml)
+![CI](https://github.com/abhishekmaity/BhashaMind/actions/workflows/test.yml/badge.svg)
 
 # *Bhasha*Mind: A Bengali Language Intelligence Platform
 
