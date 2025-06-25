@@ -23,8 +23,21 @@ public class SummarizationController {
      * @param request A map containing the text to summarize under the key "text".
      * @return The summarized text.
      */
+    @Autowired
+    private PythonNLPService pythonNLPService;
+
     @PostMapping("/summarize")
-    public String summarize(@RequestBody Map<String, String> request) {
-        return service.getSummary(request.get("text"));
+    public ResponseEntity<Map<String, Object>> summarize(@RequestBody Map<String, String> request) {
+        try {
+            String text = request.get("text");
+            if (text == null || text.length() < 10) {
+                return ResponseEntity.badRequest().body(Map.of("error", "Text too short for summarization"));
+            }
+            String summary = pythonNLPService.getSummary(text);
+            return ResponseEntity.ok(Map.of("summary", summary));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(Map.of("error", "Summarization failed: " + e.getMessage()));
+        }
     }
 }
