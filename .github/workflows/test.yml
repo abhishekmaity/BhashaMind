@@ -29,7 +29,8 @@ jobs:
       working-directory: backend-python
       run: |
         pip install -r requirements.txt
-        python -m unittest discover -s tests
+        pip install pytest # Added pytest here
+        pytest tests # Changed to pytest tests
 
     - name: Set up Java 17
       uses: actions/setup-java@v3
@@ -51,4 +52,5 @@ jobs:
       working-directory: frontend-react
       run: |
         npm install
+        npm test
         npm run build
