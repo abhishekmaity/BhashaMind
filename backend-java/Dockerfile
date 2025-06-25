@@ -1,14 +1,10 @@
 # backend-java/Dockerfile
 
-FROM eclipse-temurin:17-jdk
-
+FROM eclipse-temurin:17-jdk-alpine
 WORKDIR /app
 
-COPY .mvn/ .mvn
-COPY mvnw pom.xml ./
-RUN ./mvnw dependency:resolve
+COPY target/backend-java-*.jar app.jar
+EXPOSE 8080
 
-COPY src ./src
-RUN ./mvnw package -DskipTests
+ENTRYPOINT ["java", "-jar", "app.jar"]
 
-CMD ["java", "-jar", "target/*.jar"]
