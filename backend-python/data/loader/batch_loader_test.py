@@ -26,5 +26,17 @@ class TestBatchLoader(unittest.TestCase):
         errors = validate_dataset(df)
         self.assertEqual(len(errors), 0)
 
+def validate_bengali_text(text):
+    return isinstance(text, str) and any('\u0980' <= c <= '\u09FF' for c in text)
+
+def validate_dataset(df):
+    errors = []
+    for idx, row in df.iterrows():
+        for col in ['headline', 'body_text', 'category']:
+            if not validate_bengali_text(row[col]):
+                errors.append((idx, col))
+    return errors
+
+
 if __name__ == "__main__":
     unittest.main()
