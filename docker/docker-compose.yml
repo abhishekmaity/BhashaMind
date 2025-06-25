@@ -81,3 +81,10 @@ services:
 
 volumes:
   model_output: # This is the named volume
+
+      healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
