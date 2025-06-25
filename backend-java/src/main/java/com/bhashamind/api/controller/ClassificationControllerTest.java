@@ -1,0 +1,47 @@
+package com.bhashamind.api.controller;
+
+import com.bhashamind.api.service.PythonNLPService;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
+@WebMvcTest(ClassificationController.class)
+public class ClassificationControllerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @MockBean
+    private NLPService pythonNLPService;
+
+    @Test
+    public void testClassificationEndpointSuccess() throws Exception {
+        String inputText = "বিশ্বব্যাপী অর্থনৈতিক প্রবৃদ্ধি ধীর হয়েছে।";
+        String expectedLabel = "economy";
+
+        Mockito.when(pythonNLPService.getLabel(Mockito.anyString()))
+                .thenReturn(expectedLabel);
+
+        mockMvc.perform(post("/api/classify")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{\"text\": \"" + inputText + "\"}"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.label").value(expectedLabel));
+    }
+
+    @Test
+    public void testClassificationErrorShortInput() throws Exception {
+        mockMvc.perform(post("/api/classify")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{\"text\": \"hi\"}"))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.error").exists());
+    }
+}
