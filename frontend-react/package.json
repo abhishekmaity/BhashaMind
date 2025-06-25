@@ -1,6 +1,3 @@
-// package.json
-"proxy": "http://localhost:8080"
-
 {
   "scripts": {
     "test": "jest",
