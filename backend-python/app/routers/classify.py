@@ -4,6 +4,11 @@ from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 from app.classifier import classify_text
 
+from app.utils.prompt_templates import get_zero_shot_prompt
+
+candidate_labels = ["অর্থনীতি", "রাজনীতি", "স্বাস্থ্য", "খেলাধুলা"]
+hypotheses = [get_zero_shot_prompt(label, lang="bn") for label in candidate_labels]
+
 router = APIRouter()
 
 
