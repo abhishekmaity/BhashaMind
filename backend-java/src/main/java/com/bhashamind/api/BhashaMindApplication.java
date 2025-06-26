@@ -7,7 +7,7 @@ import org.springframework.boot.SpringApplication;
  * Main application class for BhashaMind API.
  */
 @SpringBootApplication
-public final class BhashaMindApplication {
+public class BhashaMindApplication { // Removed 'final' keyword
 
 	/**
 	 * Private constructor to prevent instantiation as a utility class.

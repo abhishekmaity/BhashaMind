@@ -1,8 +1,13 @@
 package com.bhashamind.api.controller;
 
 import com.bhashamind.api.service.SummarizationService;
+import com.bhashamind.api.service.NLPService; // Added import for NLPService
+import com.bhashamind.api.dto.SummarizationRequest; // Added import for DTO
+import com.bhashamind.api.dto.SummarizationResponse; // Added import for DTO
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,15 +32,17 @@ public class SummarizationController {
     private NLPService pythonNLPService;
 
     @PostMapping("/summarize")
-    public ResponseEntity<Map<String, Object>> summarize(@RequestBody Map<String, String> request) {
+    public ResponseEntity<?> summarize(@RequestBody SummarizationRequest requestDto) { // Changed to DTO and wildcard response
         try {
-            String text = request.get("text");
-            if (text == null || text.length() < 10) {
-                return ResponseEntity.badRequest().body(Map.of("error", "Text too short for summarization"));
+            String text = requestDto.getText();
+            if (text == null || text.trim().isEmpty() || text.length() < 10) { // Added trim and isEmpty check
+                // Returning a Map for error, consistent with original error structure
+                return ResponseEntity.badRequest().body(Map.of("error", "Input text too short for summarization."));
             }
-            String summary = pythonNLPService.getSummary(text);
-            return ResponseEntity.ok(Map.of("summary", summary));
+            SummarizationResponse summaryResponse = pythonNLPService.summarize(requestDto);
+            return ResponseEntity.ok(summaryResponse);
         } catch (Exception e) {
+            // Returning a Map for error, consistent with original error structure
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .body(Map.of("error", "Summarization failed: " + e.getMessage()));
         }
