@@ -1,6 +1,7 @@
 from fastapi import FastAPI, HTTPException, Request
 from pydantic import BaseModel
-from model_utils import summarize_text, classify_text
+from .summarizer import summarize_text
+from .classifier import classify_text
 
 app = FastAPI()
 
