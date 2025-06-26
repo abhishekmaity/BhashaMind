@@ -27,7 +27,48 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import com.bhashamind.api.dto.SummarizationRequest;
 import com.bhashamind.api.dto.SummarizationResponse;
 import com.fasterxml.jackson.databind.ObjectMapper; // For converting DTO to JSON string
+// Need DTOs for the test
+import com.bhashamind.api.dto.SummarizationRequest;
+import com.bhashamind.api.dto.SummarizationResponse;
+import com.fasterxml.jackson.databind.ObjectMapper; // For converting DTO to JSON string
 
+// Imports for specific auto-configuration classes are no longer needed here
+// as they will be referenced by their fully qualified names in a property.
+
+@WebMvcTest(controllers = SummarizationController.class,
+    properties = {
+        "spring.autoconfigure.exclude=" +
+            "org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration," +
+            "org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration," +
+            "org.springframework.boot.autoconfigure.security.servlet.SecurityFilterAutoConfiguration," +
+            "org.springframework.boot.autoconfigure.security.oauth2.client.servlet.OAuth2ClientAutoConfiguration," +
+            "org.springframework.boot.autoconfigure.security.oauth2.resource.servlet.OAuth2ResourceServerAutoConfiguration," +
+            "org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration," +
+            "org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration," +
+            "org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfiguration," +
+            "org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration"
+    }
+)
+
+// Need DTOs for the test
+import com.bhashamind.api.dto.SummarizationRequest;
+import com.bhashamind.api.dto.SummarizationResponse;
+import com.fasterxml.jackson.databind.ObjectMapper; // For converting DTO to JSON string
+
+@WebMvcTest(controllers = SummarizationController.class,
+    excludeAutoConfiguration = {
+        SecurityAutoConfiguration.class,
+        UserDetailsServiceAutoConfiguration.class,
+        SecurityFilterAutoConfiguration.class,
+        OAuth2ClientAutoConfiguration.class,
+        OAuth2ResourceServerAutoConfiguration.class,
+        DataSourceAutoConfiguration.class,
+        HibernateJpaAutoConfiguration.class,
+        JpaRepositoriesAutoConfiguration.class,
+        RabbitAutoConfiguration.class
+    }
+)
+@AutoConfigureMockMvc(secure = false) // Added annotation
 @WebMvcTest(controllers = SummarizationController.class,
     excludeAutoConfiguration = {
         SecurityAutoConfiguration.class,
