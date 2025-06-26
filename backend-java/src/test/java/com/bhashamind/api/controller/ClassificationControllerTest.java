@@ -35,7 +35,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
         RabbitAutoConfiguration.class
     }
 )
-@AutoConfigureMockMvc(secure = false) // Added annotation
+// @AutoConfigureMockMvc // secure=false is invalid; @WebMvcTest provides MockMvc
 public class ClassificationControllerTest {
 
     @Autowired

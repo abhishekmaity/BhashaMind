@@ -8,6 +8,16 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc; // Added import
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
+import org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfiguration;
+import org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration;
+import org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityFilterAutoConfiguration;
+import org.springframework.boot.autoconfigure.security.oauth2.client.servlet.OAuth2ClientAutoConfiguration;
+import org.springframework.boot.autoconfigure.security.oauth2.resource.servlet.OAuth2ResourceServerAutoConfiguration;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
@@ -25,6 +35,10 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
+// Need DTOs for the test
+import com.bhashamind.api.dto.SummarizationRequest;
+import com.bhashamind.api.dto.SummarizationResponse;
+import com.fasterxml.jackson.databind.ObjectMapper; // For converting DTO to JSON string
 @WebMvcTest(controllers = SummarizationController.class,
     excludeAutoConfiguration = {
         SecurityAutoConfiguration.class,
@@ -38,6 +52,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
         RabbitAutoConfiguration.class
     }
 )
+// @AutoConfigureMockMvc // secure=false is invalid; @WebMvcTest provides MockMvc
 public class SummarizationControllerTest {
 
     @Autowired
