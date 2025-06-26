@@ -1,6 +1,7 @@
 # backend-python/app/queue/producer.py
 
 import json
+import aio_pika
 from app.queue.connection import get_connection
 
 async def send_task_to_queue(queue_name: str, payload: dict):
