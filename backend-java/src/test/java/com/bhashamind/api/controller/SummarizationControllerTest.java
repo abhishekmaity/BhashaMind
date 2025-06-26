@@ -17,32 +17,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import com.bhashamind.api.dto.SummarizationRequest;
 import com.bhashamind.api.dto.SummarizationResponse;
 import com.fasterxml.jackson.databind.ObjectMapper; // For converting DTO to JSON string
-<<<<<<< fix/ci-build-test-failures-10
-import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
-import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
-import org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfiguration;
-import org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration;
-import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
-import org.springframework.boot.autoconfigure.task.TaskExecutionAutoConfiguration;
-import org.springframework.boot.autoconfigure.task.TaskSchedulingAutoConfiguration;
 
-@WebMvcTest(controllers = SummarizationController.class,
-            excludeAutoConfiguration = {
-                SecurityAutoConfiguration.class,
-                DataSourceAutoConfiguration.class,
-                HibernateJpaAutoConfiguration.class,
-                JpaRepositoriesAutoConfiguration.class,
-                RabbitAutoConfiguration.class,
-                RedisAutoConfiguration.class,
-                TaskExecutionAutoConfiguration.class,
-                TaskSchedulingAutoConfiguration.class
-            })
-=======
-import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration; // Added import
-
-@WebMvcTest(controllers = SummarizationController.class, excludeAutoConfiguration = {SecurityAutoConfiguration.class})
->>>>>>> main
+// Temporarily reverting to simpler annotation
+@WebMvcTest(SummarizationController.class)
 public class SummarizationControllerTest {
 
     @Autowired
