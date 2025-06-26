@@ -18,8 +18,28 @@ import com.bhashamind.api.dto.SummarizationRequest;
 import com.bhashamind.api.dto.SummarizationResponse;
 import com.fasterxml.jackson.databind.ObjectMapper; // For converting DTO to JSON string
 
-// Temporarily reverting to simpler annotation
-@WebMvcTest(SummarizationController.class)
+// Need DTOs for the test
+import com.bhashamind.api.dto.SummarizationRequest;
+import com.bhashamind.api.dto.SummarizationResponse;
+import com.fasterxml.jackson.databind.ObjectMapper; // For converting DTO to JSON string
+
+// Imports for specific auto-configuration classes are no longer needed here
+// as they will be referenced by their fully qualified names in a property.
+
+@WebMvcTest(controllers = SummarizationController.class,
+    properties = {
+        "spring.autoconfigure.exclude=" +
+            "org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration," +
+            "org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration," +
+            "org.springframework.boot.autoconfigure.security.servlet.SecurityFilterAutoConfiguration," +
+            "org.springframework.boot.autoconfigure.security.oauth2.client.servlet.OAuth2ClientAutoConfiguration," +
+            "org.springframework.boot.autoconfigure.security.oauth2.resource.servlet.OAuth2ResourceServerAutoConfiguration," +
+            "org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration," +
+            "org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration," +
+            "org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfiguration," +
+            "org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration"
+    }
+)
 public class SummarizationControllerTest {
 
     @Autowired
