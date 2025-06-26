@@ -69,7 +69,20 @@ import com.fasterxml.jackson.databind.ObjectMapper; // For converting DTO to JSO
     }
 )
 @AutoConfigureMockMvc(secure = false) // Added annotation
-
+@WebMvcTest(controllers = SummarizationController.class,
+    excludeAutoConfiguration = {
+        SecurityAutoConfiguration.class,
+        UserDetailsServiceAutoConfiguration.class,
+        SecurityFilterAutoConfiguration.class,
+        OAuth2ClientAutoConfiguration.class,
+        OAuth2ResourceServerAutoConfiguration.class,
+        DataSourceAutoConfiguration.class,
+        HibernateJpaAutoConfiguration.class,
+        JpaRepositoriesAutoConfiguration.class,
+        RabbitAutoConfiguration.class
+    }
+)
+@AutoConfigureMockMvc(secure = false) // Added annotation
 public class SummarizationControllerTest {
 
     @Autowired
