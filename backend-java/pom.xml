@@ -23,6 +23,13 @@
         <checkstyle.version>10.12.7</checkstyle.version>
         <maven-checkstyle-plugin.version>3.3.1</maven-checkstyle-plugin.version>
         <maven-pmd-plugin.version>3.21.2</maven-pmd-plugin.version>
+        <surefire.jvm.args>
+            --add-opens java.base/java.lang=ALL-UNNAMED
+            --add-opens java.base/java.io=ALL-UNNAMED
+            --add-opens java.base/java.util=ALL-UNNAMED
+            --add-opens java.base/java.time=ALL-UNNAMED
+            --add-opens java.base/java.net=ALL-UNNAMED
+        </surefire.jvm.args>
     </properties>
 
     <dependencies>
@@ -112,6 +119,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.1.2</version> <!-- Use a version compatible with Spring Boot 3.2 and Java 17 -->
                 <configuration>
+                    <argLine>${surefire.jvm.args}</argLine>
                     <argLine>
                         --add-opens java.base/java.lang=ALL-UNNAMED
                         --add-opens java.base/java.io=ALL-UNNAMED
