@@ -22,8 +22,6 @@ import org.springframework.boot.autoconfigure.security.servlet.UserDetailsServic
 import org.springframework.boot.autoconfigure.security.servlet.SecurityFilterAutoConfiguration;
 import org.springframework.boot.autoconfigure.security.oauth2.client.servlet.OAuth2ClientAutoConfiguration;
 import org.springframework.boot.autoconfigure.security.oauth2.resource.servlet.OAuth2ResourceServerAutoConfiguration;
-import org.springframework.boot.test.autoconfigure.web.servlet.MockMvcSecurityConfiguration; // Added import
-
 
 @WebMvcTest(controllers = ClassificationController.class,
     excludeAutoConfiguration = {
@@ -32,8 +30,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.MockMvcSecurityCo
         SecurityFilterAutoConfiguration.class,
         OAuth2ClientAutoConfiguration.class,
         OAuth2ResourceServerAutoConfiguration.class,
-        MockMvcSecurityConfiguration.class, // Added MockMvcSecurityConfiguration
-
         DataSourceAutoConfiguration.class,
         HibernateJpaAutoConfiguration.class,
         JpaRepositoriesAutoConfiguration.class,
