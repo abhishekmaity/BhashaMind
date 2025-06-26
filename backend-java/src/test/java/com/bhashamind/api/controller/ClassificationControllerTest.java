@@ -17,8 +17,14 @@ import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-// Temporarily reverting to simpler annotation to isolate compilation error
-@WebMvcTest(ClassificationController.class)
+@WebMvcTest(controllers = ClassificationController.class,
+    excludeAutoConfiguration = {
+        SecurityAutoConfiguration.class,
+        DataSourceAutoConfiguration.class,
+        HibernateJpaAutoConfiguration.class,
+        JpaRepositoriesAutoConfiguration.class,
+        RabbitAutoConfiguration.class
+    })
 public class ClassificationControllerTest {
 
     @Autowired

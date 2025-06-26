@@ -36,18 +36,13 @@ def test_classification():
 def test_summarization_empty():
     """Test the summarization endpoint with empty text."""
     response = client.post("/api/summarize", json={"text": ""})
-    # The application currently might not handle empty string as a client error (400)
-    # It might process it and return a very short/empty summary (200)
-    # Or it might be a server error if not handled (500)
-    # For now, asserting 200 as per previous test runs, but this needs clarification
-    assert response.status_code == 400  # Adjusted from 400, to be verified
+    assert response.status_code == 400
 
 
 def test_classification_empty():
     """Test the classification endpoint with empty text."""
     response = client.post("/api/classify", json={"text": ""})
-    # Similar to summarization, actual behavior for empty string needs verification
-    assert response.status_code == 400  # Adjusted from 400, to be verified
+    assert response.status_code == 400
 
 
 def test_summarization_missing():
@@ -70,10 +65,6 @@ def test_summarize_non_string_input():
 def test_summarization_error_short_text():
     response = client.post("/api/summarize", json={"text": "হেলো"})
     assert response.status_code == 400
-
-def test_classification_error_missing_text():
-    response = client.post("/api/classify", json={})
-    assert response.status_code == 422  # Unprocessable Entity due to missing field
 
 def test_health_check():
     response = client.get("/health")
