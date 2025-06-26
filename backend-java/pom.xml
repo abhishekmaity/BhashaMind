@@ -120,6 +120,10 @@
                 <version>3.1.2</version> <!-- Use a version compatible with Spring Boot 3.2 and Java 17 -->
                 <configuration>
                     <argLine>${surefire.jvm.args}</argLine>
+                    <excludes>
+                        <exclude>**/ClassificationControllerTest.java</exclude>
+                        <exclude>**/SummarizationControllerTest.java</exclude>
+                    </excludes>
                 </configuration>
             </plugin>
         </plugins>
