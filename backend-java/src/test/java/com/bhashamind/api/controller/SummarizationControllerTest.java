@@ -17,6 +17,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import com.bhashamind.api.dto.SummarizationRequest;
 import com.bhashamind.api.dto.SummarizationResponse;
 import com.fasterxml.jackson.databind.ObjectMapper; // For converting DTO to JSON string
+<<<<<<< fix/ci-build-test-failures-10
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
@@ -37,6 +38,11 @@ import org.springframework.boot.autoconfigure.task.TaskSchedulingAutoConfigurati
                 TaskExecutionAutoConfiguration.class,
                 TaskSchedulingAutoConfiguration.class
             })
+=======
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration; // Added import
+
+@WebMvcTest(controllers = SummarizationController.class, excludeAutoConfiguration = {SecurityAutoConfiguration.class})
+>>>>>>> main
 public class SummarizationControllerTest {
 
     @Autowired

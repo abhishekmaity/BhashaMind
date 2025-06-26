@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+<<<<<<< fix/ci-build-test-failures-10
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
@@ -13,6 +14,9 @@ import org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration;
 import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
 import org.springframework.boot.autoconfigure.task.TaskExecutionAutoConfiguration;
 import org.springframework.boot.autoconfigure.task.TaskSchedulingAutoConfiguration;
+=======
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration; // Added import
+>>>>>>> main
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
@@ -20,6 +24,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+<<<<<<< fix/ci-build-test-failures-10
 @WebMvcTest(controllers = ClassificationController.class,
             excludeAutoConfiguration = {
                 SecurityAutoConfiguration.class,
@@ -31,6 +36,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
                 TaskExecutionAutoConfiguration.class,
                 TaskSchedulingAutoConfiguration.class
             })
+=======
+@WebMvcTest(controllers = ClassificationController.class, excludeAutoConfiguration = {SecurityAutoConfiguration.class})
+>>>>>>> main
 public class ClassificationControllerTest {
 
     @Autowired
