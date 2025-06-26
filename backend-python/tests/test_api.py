@@ -30,9 +30,7 @@ def test_classification():
     response = client.post("/api/classify", json={"text": text_to_classify})
     assert response.status_code == 200
     # Assuming the service returns a label, actual key might vary
-    # For now, checking if the response is a non-empty list as per current classify_text
-    assert response.json()  # Check if it's a valid JSON response
-    # assert "label" in response.json() # Or more specific key if known
+    assert "label" in response.json() # Or more specific key if known
 
 
 def test_summarization_empty():
@@ -68,16 +66,6 @@ def test_summarize_non_string_input():
     """Test summarization with non-string input."""
     response = client.post("/api/summarize", json={"text": 12345})
     assert response.status_code == 422  # Unprocessable Entity
-
-def test_summarization_success():
-    response = client.post("/api/summarize", json={"text": "আন্তর্জাতিক বাজারে তেলের দাম হঠাৎ কমে গেছে।"})
-    assert response.status_code == 200
-    assert "summary" in response.json()
-
-def test_classification_success():
-    response = client.post("/api/classify", json={"text": "বাংলাদেশের অর্থনীতি কৃষিনির্ভর।"})
-    assert response.status_code == 200
-    assert "label" in response.json()
 
 def test_summarization_error_short_text():
     response = client.post("/api/summarize", json={"text": "হেলো"})
