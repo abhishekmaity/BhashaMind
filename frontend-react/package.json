@@ -1,11 +1,12 @@
-"proxy": "http://localhost:8080"
-
 {
+  "proxy": "http://localhost:8080",
   "scripts": {
     "test": "jest",
-    "lint": "eslint src/**/*.{js,jsx,ts,tsx}"
+    "lint": "eslint src/**/*.{js,jsx,ts,tsx}",
+    "build": "npx rimraf ./dist && npx babel src --out-dir dist --extensions \".js,.jsx,.ts,.tsx\" --copy-files && npx tailwindcss -i ./src/styles/index.css -o ./dist/styles.css"
   },
   "devDependencies": {
+    "@babel/cli": "^7.23.0",
     "@babel/eslint-parser": "^7.27.5",
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
