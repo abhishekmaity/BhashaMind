@@ -1,4 +1,4 @@
-![Project Status](https://img.shields.io/badge/Status-In%20Development-yellow)
+![Project Status](https://img.shields.io/badge/Status-Alpha-orange)
 ![Python](https://img.shields.io/badge/Python-3.10-blue?logo=python)
 ![Java](https://img.shields.io/badge/Java-17-red?logo=java)
 ![React](https://img.shields.io/badge/React-Frontend-blue?logo=react)
