@@ -4,6 +4,12 @@
 ![React](https://img.shields.io/badge/React-Frontend-blue?logo=react)
 ![Docker Image Version](https://img.shields.io/badge/Docker%20Image-latest-blue?logo=docker)
 ![CI](https://github.com/abhishekmaity/BhashaMind/actions/workflows/test.yml/badge.svg)
+![License](https://img.shields.io/github/license/abhishekmaity/BhashaMind)
+![Language](https://img.shields.io/badge/Language-Bengali-yellowgreen)
+![Model](https://img.shields.io/badge/Model-LLM%2FTransformers-9cf?logo=huggingface)
+![Tasks](https://img.shields.io/badge/NLP-Summarization%20%7C%20Classification-purple)
+![Zero-Shot](https://img.shields.io/badge/Inference-Zero--Shot%20Enabled-ff69b4)
+![Architecture](https://img.shields.io/badge/Architecture-Microservices-informational?logo=springboot)
 
 # *Bhasha*Mind: A Bengali Language Intelligence Platform
 
