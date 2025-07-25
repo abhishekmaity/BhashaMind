@@ -67,9 +67,9 @@ BhashaMind (ভাষাMind) is an open-source Bengali language processing prot
 </small>
 
 ## 🤖 Models Used
-| Task           | Model Name                             | Reference/Link                              |
+| Task           | Model Name                               | Reference/Link                              |
 |----------------|------------------------------------------|---------------------------------------------|
-| Summarization  | `csebuetnlp/banglat5-small` (optional)   | [BanglaT5 - Hugging Face](https://huggingface.co/csebuetnlp/banglat5_small) |
+| Summarization  | `csebuetnlp/banglat5-small`              | [BanglaT5 - Hugging Face](https://huggingface.co/csebuetnlp/banglat5_small) |
 | Classification | `joeddav/xlm-roberta-large-xnli`         | [XLM-RoBERTa - Hugging Face](https://huggingface.co/joeddav/xlm-roberta-large-xnli) |
 
 > **Note:** Bengali is supported by XLM-R via multilingual training and subword tokenization.
@@ -77,8 +77,8 @@ BhashaMind (ভাষাMind) is an open-source Bengali language processing prot
 ## 📚 References & Resources
 - [FastAPI](https://fastapi.tiangolo.com)
 - [Transformers by HuggingFace](https://huggingface.co/transformers)
-- [XLM-RoBERTa Paper](https://arxiv.org/abs/1911.02116)
-- [BanglaT5: Bangla Text-to-Text Transfer Transformer](https://aclanthology.org/2023.findings-eacl.54.pdf)
+- [XLM-RoBERTa](https://arxiv.org/abs/1911.02116)
+- [BanglaT5](https://aclanthology.org/2023.findings-eacl.54.pdf)
 
 ## 📜 Citing
 
