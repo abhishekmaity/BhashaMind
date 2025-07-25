@@ -97,4 +97,4 @@ This project is licensed under the **MIT License**.
 
 ---
 
-> Made with ❤️ to uplift the Bengali language in the AI era.
+> Made with ❤️ and code.
