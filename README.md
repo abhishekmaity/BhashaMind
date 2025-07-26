@@ -82,10 +82,21 @@ BhashaMind (ভাষাMind) is an open-source Bengali language processing prot
 
 ## 📜 Citing
 
-If you use this, please include the following citation: 
+If you use this, please include the following citation:
+
+Maity, A. (2025) *“A Low-Resource Bengali Language Intelligence Platform for Summarization and Zero-Shot Classification”*.<br>
+**Zenodo**. DOI:[10.5281/zenodo.16434434](https://doi.org/10.5281/zenodo.16434434)
 
 ```
-Pending approval 
+@misc{maity2025bhashamind,
+  author       = {Maity, Abhishek},
+  title        = {A Low-Resource Bengali Language Intelligence Platform for Summarization and Zero-Shot Classification},
+  year         = {2025},
+  publisher    = {Zenodo and {CERN}},
+  doi          = {10.5281/zenodo.16434434},
+  url          = {https://doi.org/10.5281/zenodo.16434434},
+  language     = {en}
+}
 ```
 
 ## 📄 License
